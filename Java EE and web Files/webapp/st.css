@@ -1,0 +1,139 @@
+*{
+   margin:0;
+   padding:0;
+   color: white;
+   font-family: cursive;
+   text-align: center;
+}
+ body{
+   overflow: hidden;
+   background-image: url("homef.jpeg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   bottom: 100%;
+ }
+#bg{
+   text-align: center;
+}
+#header{
+   border-radius: 8px;
+   position: fixed;
+   margin: 0;
+   top: 0;
+   z-index: 1;
+   min-height:10%;
+   width:100%;
+   background-image:linear-gradient(rgb(24,119,163),rgb(6,40,88));
+   background-position:center;
+   background-size:cover;
+   font-size: 30px;
+   vertical-align: middle;
+   padding: 25px 0 0 0;
+   font-family: monospace, serif;;
+}
+.a{
+   display: inline-block;
+   border: 1px solid blanchedalmond;
+   height: 82px;
+   width: 30%;
+   font-size: 30px;
+   text-align: center;
+   background-color: rgba(0, 0, 0, 0.7);
+   margin: 0 5%;
+   overflow:hidden;
+}
+.b{
+   padding: 20px 0;
+   display: inline-block;
+   border: 1px solid blanchedalmond;
+   width: 28%;
+   margin: 0 2%;
+   font-size: 25px;
+   text-align: center;
+   background-color: rgba(0, 0, 0, 0.7);
+}
+div{
+   margin: 50px 0px;
+   padding: 10px 0;
+}
+.title{
+   margin: auto;
+   font-size: 22px;
+   width: 65%;
+   padding: 1px 0px;  
+   text-align: center;
+   border-top: 2px solid white;
+   border-bottom: 2px solid white;
+   padding: 10px;
+   background-color: rgba(0, 0, 0, 0.7);
+   font-family: monospace;
+}
+.d{
+   background-color: chartreuse; 
+   border-radius: 3px;
+   padding: 3px 7px;
+   color: black;
+}
+div.automation{
+   overflow: auto;
+   white-space: nowrap;
+ }
+ 
+ div.automation li {
+   display: inline-block;
+   width: 32%;
+   font-size: 21px;
+   text-align: center;
+   padding: 14px;
+   text-decoration: none;
+   border-right: 2px solid white;
+   background-color: rgba(0, 0, 0, 0.7);
+   margin: 0 10px;
+ }
+ .e{
+   padding: 5px 10px;
+   border-radius: 5px;
+   background-color: chartreuse;
+   margin: 0px 20px;
+   color: black;
+}
+ ::-webkit-scrollbar{
+   width: 0px;
+ }
+
+ ul{
+   text-align: center;
+ }
+ table{
+   width: 100%;
+ }
+ td{
+   width: 45%;
+ }
+ .e:hover{
+ 	cursor:pointer;
+ }
+
+ @media  screen and (max-width:480px) {
+ 	*{
+ 	font-family: 'Times New Roman', times,serif;
+ 	}
+   body{
+      height:1080px;
+      overflow:auto;
+   }
+   .a{
+      width: 100%;
+      font-size: 22px;
+   }
+   .b{
+      width: 100%;
+      font-size: 22px;
+   }
+   div.automation li{
+      width: 90%;
+      font-size: 20px;
+      display: block;
+   }
+
+ }

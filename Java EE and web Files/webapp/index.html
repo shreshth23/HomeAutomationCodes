@@ -1,0 +1,177 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Home Automation,Safety and Security</title>
+    <link rel="stylesheet" href="st.css">
+</head>
+<body style="background-image: url('homef.jpg')">
+<div id="header">
+    Home Automation,Safety and Security
+</div>
+<div id="bg">
+<div id="a">
+    <ul>
+        <li class="a"> TEMPERATURE
+            <p id="temp">27 &#8451 </p>
+        </li>
+        <li class="a">HUMIDITY
+            <p id="humd">30%</p>
+        </li>
+    </ul>
+</div>
+<div id="b">
+    <ul>
+        <li class="b">FIRE ALARM
+            <p class="p"><button class="d" onclick="security('D5')" id="safe" disabled >Disable Fire Alarm</button></p>
+        </li>
+        <li class="b">SECURITY
+            <p class="p"><button class="d" onclick="security('A0')" id="secure"  >Disable Security Alarm</button></p>
+        </li>
+        <li class="b">GAS LEAKAGE ALERT
+            <p class="p"><button class="d" onclick="gas('D4')" id="no_leakage" disabled >Disable Gas Leakage Alarm</button></p>
+        </li>
+    </ul>
+</div>
+    <div class="title" style="font-size:25px ;">HOME AUTOMATION</div>
+<div class="automation">
+    <ul>
+        <li class="f">
+            <table>
+                <tr>
+                    <td>
+                        BEDROOM
+                    </td>
+                    <td>
+                        <button class="e" onclick="light('D0')" id="D0">Bulb 1</button>
+                    </td>
+                </tr>
+            </table>
+        </li>
+        <li class="f">
+            <table>
+                <tr>
+                    <td>
+                        KITCHEN
+                    </td>
+                    <td>
+                        <button class="e" onclick="light('D1')" id="D1">Bulb 2</button>
+                    </td>
+                </tr>
+            </table>
+        </li>
+        <li class="f">
+            <table>
+                <tr>
+                    <td>
+                        BATHROOM
+                    </td>
+                    <td >
+                        <button class="e" onclick="light('D2')" id="D2">Bulb 3</button>
+                    </td>
+                </tr>
+            </table>
+        </li>
+        <li class="f">
+            <table>
+                <tr>
+                    <td >
+                        HALL
+                    </td>
+                    <td >
+                        <button class="e" onclick="light('D6')" id="D6">Bulb 4</button>
+                    </td>
+                </tr>
+            </table>
+        </li> 
+    </ul>
+</div>
+</div>
+<script type="text/javascript">
+	setInterval(()=>{
+        fetch("States")
+        .then(res=>res.json())
+        .then(data=>{
+            id = 'D0'
+            btn = document.getElementById(id)
+            if(data[id]==0)
+                btn.style.background = 'red'
+            else
+                btn.style.background = 'chartreuse'
+            id = 'D1'
+            btn = document.getElementById(id)
+            if(data[id]==0)
+                btn.style.background = 'red'
+            else
+                btn.style.background = 'chartreuse'
+            id = 'D2'
+            btn = document.getElementById(id)
+            if(data[id]==0)
+                btn.style.background = 'red'
+            else
+                btn.style.background = 'chartreuse'
+            id = 'D6'
+            btn = document.getElementById(id)
+            if(data[id]==0)
+                btn.style.background = 'red'
+            else
+                btn.style.background = 'chartreuse'
+            id='secure'	
+   			btn=document.getElementById(id)
+    		if(data['A0']==1){
+   			btn.style.background = 'red';
+   			btn.innerText="Security Breach";
+   			document.getElementById('secure').disabled=false;
+   			}
+			else{
+        	btn.style.background = 'chartreuse';
+       		document.getElementById('secure').disabled=true;
+       		btn.innerText="Everything Secure";	
+       		}
+            id='safe'	
+       			btn=document.getElementById(id)
+        		if(data['D5']==1){
+       			btn.style.background = 'red';
+       			btn.innerText="Fire Alert";
+       			document.getElementById('safe').disabled=false;
+       			}
+    			else{
+            	btn.style.background = 'chartreuse';
+           		document.getElementById('safe').disabled=true;
+           		btn.innerText="Fire Undercontrol";	
+           		}
+            id='no_leakage'	
+       			btn=document.getElementById(id)
+        		if(data['D4']==1){
+       			btn.style.background = 'red';
+       			btn.innerText="Gas Leakage";
+       			document.getElementById('no_leakage').disabled=false;
+       			}
+    			else{
+            	btn.style.background = 'chartreuse';
+           		document.getElementById('no_leakage').disabled=true;
+           		btn.innerText="No Gas Leakage";	
+           		}
+            id='temp'	
+            btn=document.getElementById(id).innerHTML=data['temp']+" &#8451"
+            id='humd'	
+            btn=document.getElementById(id).innerHTML=data['humd']+" %"
+        })
+    },500)
+    function light(pin) {
+        fetch("toggle?t="+pin)
+    }
+	function security(pin){
+		fetch("toggle?t="+pin)
+		}
+	function fire(pin) {
+		fetch("toggle?="+pin)
+	}
+	function gas(pin){
+		fetch("toggle?t="+pin)
+		}
+</script>
+</body>
+
+</html>
